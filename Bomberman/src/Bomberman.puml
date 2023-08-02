@@ -1,0 +1,192 @@
+@startuml
+
+package logic {
+
+    class Bomberman {
+    - Area[] : areas
+    + linkAreas()
+    + restartAreas()
+    }
+
+
+    abstract class Character {
+        # positionX: int
+        # positionY: int
+        # direction: String
+        # spriteDirection: String
+        + run(): void
+        + update(): void
+        + move(direction: String, speed: int): void
+        + isColliding(): boolean
+        + canMove(newDirection: String): boolean
+        + needToGoOppositeDirection(currentDirection: String, newDirection: String): boolean
+    }
+
+    abstract class Enemy {
+        # lastDirection: String
+        # speed: int
+        + chase(): void
+        + teleport(): void
+        + getOptimalMovement(lastDirection: String): String
+        + getRandomDirection(lastDirection: String): String
+    }
+
+    class Player {
+        - lastDirection: String
+        - score: int
+        - getItem(): void
+        - getMovement(): String
+    }
+
+    class Bomb {
+        - timeToExplode: int
+        - explosionRadius: int
+        + explode(): void
+        + setTimeToExplode(time: int): void
+        + setExplosionRadius(radius: int): void
+    }
+
+
+    class Bayon {
+    }
+
+    class Ballom {
+    }
+
+    class Nagacham {
+    }
+
+    class Terupyo {
+    }
+
+    class Map {
+        - map: int[ ][ ]
+        - loadMap(): void
+        + getMapValue(row: int, column: int): int
+    }
+
+
+}
+interface Runnable {
+     }
+interface KeyListener {
+    }
+package presentation {
+    abstract class GraphicInterface {
+        - panel: GamePanel
+        + run(): void
+        + getSprite(): void
+    }
+
+    abstract class EnemyGraphicInterface {
+    - enemies : Enemy
+    - bufferedImages
+    - update() : boolean
+    }
+
+    class BallomGraphicInterface {
+    }
+
+    class TerupyoGraphicInterface {
+    }
+
+    class KeyDetector {
+            direction: String
+            keyTyped(e: KeyEvent): void
+    }
+
+    class BayonGraphicInterface {
+    }
+
+    class NagachamGraphicInterface {
+    }
+
+    class PlayerGraphicInterface {
+    }
+
+    class FrameGraphicInterface {
+    - player : Player
+    - map : Map
+    - font : Font
+    + updateImages() : void
+    }
+
+    class MapGraphicInterface {
+    - pause() :  void
+    - quitPause() : void
+    }
+
+    class MenuPanel {
+    + putButtons()
+    + configureButtons()
+    + addAreas()
+    + manageAreas()
+
+    }
+
+    class Area {
+        + startArea(): void
+        + isCompleted(): boolean
+    }
+
+    class GamePanel {
+        + startGameThreads()
+    }
+}
+
+package logic.powerUps {
+
+    abstract class PowerUp {
+        # positionX: int
+        # positionY: int
+        + applyPowerUp(player: Player): void
+    }
+
+    class FireUp {
+    }
+
+    class SpeedUp {
+    }
+
+    class RemoteControl {
+    }
+}
+
+GraphicInterface ..|> Runnable
+EnemyGraphicInterface -l-|> GraphicInterface
+FrameGraphicInterface --|> GraphicInterface
+FrameGraphicInterface ..|> KeyDetector
+BallomGraphicInterface --|> EnemyGraphicInterface
+BayonGraphicInterface --|> EnemyGraphicInterface
+TerupyoGraphicInterface --|> EnemyGraphicInterface
+NagachamGraphicInterface --|> EnemyGraphicInterface
+PlayerGraphicInterface --|> GraphicInterface
+MapGraphicInterface --|> GraphicInterface
+
+presentation ..> logic
+GamePanel --> "*" GraphicInterface
+
+MenuPanel --> "6" Area: areas
+Area --> GamePanel
+KeyDetector ..|> KeyListener
+
+Ballom --|> Enemy
+Bayon --|> Enemy
+Terupyo --|> Enemy
+Nagacham --|> Enemy
+
+
+Bomberman --> "1" Player
+Bomberman --> "1..4" Enemy
+Character --> Map
+Character .u.|> Runnable
+Player --|> Character
+Enemy -l-|> Character
+Player --> "1" KeyDetector: controls
+Player -l-> "*" PowerUp: power-ups
+PowerUp <|-- FireUp
+PowerUp <|-- SpeedUp
+PowerUp <|-- RemoteControl
+Player ..> Bomb
+
+@enduml
