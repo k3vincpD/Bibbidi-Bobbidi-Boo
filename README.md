@@ -1,2 +1,1 @@
-# P.U.T.O
-Proyecto Unificado de Trabajo con Objetos
+Hagamos magia para pasar el semestre
