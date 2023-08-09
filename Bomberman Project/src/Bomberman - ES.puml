@@ -1,0 +1,172 @@
+@startuml
+
+package lógica {
+interface Runnable {
+}
+
+abstract class Personaje {
+    # posiciónX: int
+    # posiciónY: int
+    # dirección: String
+    # spriteDirección: String
+    + ejecutar(): void
+    + actualizar(): void
+    + mover(dirección: String, velocidad: intvelocidad: int): void
+    + estáChocando(): boolean
+    + puedeMover(nuevaDirección: String): boolean
+    + necesitaIrDirecciónOpuesta(direcciónActual: String, nuevaDirección: String): boolean
+}
+
+abstract class Enemigo {
+    # últimaDirección: String
+    # velocidad: int
+    + perseguir(): void
+    + teletransportar(): void
+    + obtenerMovimientoÓptimo(últimaDirección: String): String
+    + obtenerDirecciónAleatoria(últimaDirección: String): String
+}
+
+class Jugador {
+    - últimaDirección: String
+    - puntuación: int
+    - obtenerItem(): void
+    - obtenerMovimiento(): String
+}
+
+class Bomba {
+    - tiempoParaExplotar: int
+    - radioExplosión: int
+    + explotar(): void
+    + establecerTiempoParaExplotar(tiempo: int): void
+    + establecerRadioExplosión(radio: int): void
+}
+
+
+class Bayon {
+}
+
+class Ballom {
+}
+
+class Nagacham {
+}
+
+class Terupyo {
+}
+
+class Mapa {
+    - mapa: int[ ][ ]
+    - cargarMapa(): void
+    + obtenerValorMapa(fila: int, columna: int): int
+}
+
+class DetectorTeclas {
+    dirección: String
+    teclaPulsada(e: EventoTecla): void
+}
+
+interface KeyListener {
+}
+}
+
+package presentación {
+abstract class InterfazGráfica {
+- panel: PanelJuego
++ ejecutar(): void
++ obtenerSprite(): void
+}
+
+
+abstract class InterfazGráficaEnemigo {
+}
+
+class InterfazGráficaBallom {
+}
+
+class InterfazGráficaTerupyo {
+}
+
+class InterfazGráficaBayon {
+}
+
+class InterfazGráficaNagacham {
+}
+
+class InterfazGráficaJugador {
+}
+
+class InterfazGráficaMarco {
+}
+
+class InterfazGráficaMapa {
+}
+
+class Bomberman {
+}
+
+class PanelMenú {
+}
+
+class Área {
+    + iniciarÁrea(): void
+    + estáCompletada(): boolean
+}
+
+class PanelJuego {
+    + iniciarHilosJuego()
+}
+}
+
+package lógica.PowerUp {
+
+abstract class Mejora {
+    # posiciónX: int
+    # posiciónY: int
+    + aplicarMejora(jugador: Jugador): void
+}
+
+class FireUp {
+}
+
+class SpeedUp {
+}
+
+class RemoteRemoto {
+}
+}
+
+InterfazGráfica ..|> Runnable
+InterfazGráficaEnemigo --|> InterfazGráfica
+InterfazGráficaMarco --|> InterfazGráfica
+InterfazGráficaBallom --|> InterfazGráficaEnemigo
+InterfazGráficaBayon --|> InterfazGráficaEnemigo
+InterfazGráficaTerupyo --|> InterfazGráficaEnemigo
+InterfazGráficaNagacham --|> InterfazGráficaEnemigo
+InterfazGráficaJugador --|> InterfazGráfica
+InterfazGráficaMapa --|> InterfazGráfica
+
+presentación ..> lógica
+PanelJuego --> "*" InterfazGráfica
+Bomberman --> PanelMenú
+
+PanelMenú --> "6" Área: áreas
+Área --> PanelJuego
+DetectorTeclas..|> KeyListener
+
+Ballom --|> Enemigo
+Bayon --|> Enemigo
+Terupyo --|> Enemigo
+Nagacham --|> Enemigo
+
+Personaje --> Mapa
+Personaje .u.|> Runnable
+Jugador --|> Personaje
+Enemigo -l-|> Personaje
+Jugador --> "1" DetectorTeclas: controles
+Jugador -l-> "*" Mejora: power-ups
+PowerUp <|-- FireUp
+PowerUp <|-- SpeedUp
+PowerUp <|-- RemoteRemoto
+Jugador ..> Bomba
+
+@enduml
