@@ -7,14 +7,14 @@ import java.util.Random;
  * If it collides with a player without a Power Pellet, the player loses a life.
  */
 public abstract class Enemy extends Character {
-    private final int SCORE_PER_ENEMY = 200;
-    protected final int FLEE_SPEED = 1;
-    protected final int NORMAL_SPEED;
-    protected final int MOVE_VALUE = 1;
-    protected Key previousDirection;
-    protected Player player;
-    protected boolean fleeing = false;
-    protected int spawnColumn, spawnRow;
+    private static final int SCORE_PER_ENEMY = 200;
+    private final int FLEE_SPEED = 1;
+    private final int NORMAL_SPEED;
+    private final int MOVE_VALUE = 1;
+    private Key previousDirection;
+    private Player player;
+    private boolean fleeing = false;
+    private int spawnColumn, spawnRow;
     private boolean reachedCorner;
 
     public Enemy(int speed, Map map, Player player, int waitTime) {
@@ -33,11 +33,12 @@ public abstract class Enemy extends Character {
 
     @Override
     public void update() {
-        isPaused();
-        if (!canContinueGame()) {
+        if (isPaused() || !canContinueGame()) {
             return;
         }
+
         checkPlayerState();
+
         if (isWaiting) {
             actionWhenWaiting(waitTime);
         } else if (fleeing) {
@@ -54,39 +55,27 @@ public abstract class Enemy extends Character {
         }
     }
 
-    /**
-     * Changes the state of the ghost based on player actions
-     */
     private void checkPlayerState() {
         if (!player.isAlive) {
-            fleeing = false;
-            isWaiting = true;
-            counter = 0;
-            reachedCorner = false;
-        }
-        if (!isWaiting && player.activatedPowerPellet()) {
+            resetEnemyState();
+        } else if (player.activatedPowerPellet()) {
             fleeing = true;
         } else if (!player.hasPowerPellet()) {
             fleeing = false;
         }
     }
 
-    /**
-     * Pauses the logical thread of the ghost if the player has paused the game
-     */
-
-    public boolean isPaused() {
-        if (!player.paused) {
-            return paused = false;
-        } else {
-            return paused = true;
-        }
+    private void resetEnemyState() {
+        fleeing = false;
+        isWaiting = true;
+        counter = 0;
+        reachedCorner = false;
     }
 
-    /**
-     * Checks if the game has ended, in which case, ends the logical thread of the ghost
+    public boolean isPaused() {
+        return player.paused;
+    }
 
-     */
     private boolean canContinueGame() {
         if (player.getLives() == 0 || player.ateAllPacDots()) {
             thread = false;
@@ -96,15 +85,10 @@ public abstract class Enemy extends Character {
     }
 
     protected boolean isCollidingWithPlayer() {
-        for (int i = 0; i < 12; i++) {
-            if (((this.positionX + i) == player.positionX && (this.positionY) == player.positionY)
-                    || ((this.positionX - i) == player.positionX && this.positionY == player.positionY)
-                    || (this.positionX == player.positionX && (this.positionY + i) == player.positionY)
-                    || (this.positionX == player.positionX && (this.positionY - i) == player.positionY)) {
-                return true;
-            }
-        }
-        return false;
+        int maxCollisionDistance = 12; // Adjust this value as needed
+        int xDistance = Math.abs(this.positionX - player.positionX);
+        int yDistance = Math.abs(this.positionY - player.positionY);
+        return xDistance <= maxCollisionDistance && yDistance <= maxCollisionDistance;
     }
 
     /**
@@ -127,7 +111,7 @@ public abstract class Enemy extends Character {
         changeSpeed();
         if (isAligned()) {
             previousDirection = direction;
-            direction = getRandomDirection(previousDirection);
+            direction = getRandomValidDirection(previousDirection);
         }
         move(direction, speed);
     }
@@ -226,7 +210,7 @@ public abstract class Enemy extends Character {
         return movement;
     }
 
-    public Key getRandomDirection(Key currentKey) {
+    protected Key getRandomValidDirection(Key currentKey) {
         Random rand = new Random();
         Key key;
         Key[] keyArray = {Key.UP, Key.DOWN, Key.LEFT, Key.RIGHT};

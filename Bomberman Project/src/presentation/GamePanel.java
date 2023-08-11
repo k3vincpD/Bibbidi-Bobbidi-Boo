@@ -42,6 +42,7 @@ public class GamePanel extends JFrame{
         addButtons();
         setVisible(true);
 
+
         //todo: Add sound to the game
         //sound = new Sound();
         //sound.loadSounds(Sounds.MENU);
@@ -56,7 +57,7 @@ public class GamePanel extends JFrame{
     private void addButtons() {
         Font bombermanFont;
         try {
-            bombermanFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/pixel-nes.otf"));
+            bombermanFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/BOMBERMA.TTF"));
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
