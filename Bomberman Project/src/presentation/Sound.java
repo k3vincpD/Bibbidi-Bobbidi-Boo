@@ -18,15 +18,15 @@ public class Sound implements Serializable {
     }
 
     private void loadSounds() {
-        sounds[0] = getUrl("menuSound");
-        sounds[1] = getUrl("deathSound");
-        sounds[2] = getUrl("gameSound");
-        sounds[3] = getUrl("startGameSound");
-        sounds[4] = getUrl("powerUpSound");
+        sounds[0] = getUrl("sonidoMenu");
+        sounds[1] = getUrl("sonidoMuerte");
+        sounds[2] = getUrl("sonidoPartida");
+        sounds[3] = getUrl("sonidoInicioPartida");
+        sounds[4] = getUrl("sonidoPowerUp");
     }
 
     private URL getUrl(String audioName) {
-        return getClass().getResource("/res/sounds/" + audioName + ".wav");
+        return getClass().getResource("/res/sonidos/" + audioName + ".wav");
     }
 
     public void getSounds(TypeOfSound s) {

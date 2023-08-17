@@ -4,7 +4,7 @@ public enum Difficulty {
     EASY(1),
     INTERMEDIATE(2),
     HARD(3),
-    POLITECNICA(4);
+    POLITECNIC(4);
 
     private final int speedValue;
 

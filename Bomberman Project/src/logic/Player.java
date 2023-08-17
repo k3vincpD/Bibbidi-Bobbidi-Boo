@@ -3,7 +3,6 @@ package logic;
 import presentation.KeyDetector;
 import presentation.TypeOfSound;
 import presentation.Sound;
-import presentation.TypeOfSound;
 
 import java.io.*;
 import java.util.*;
@@ -19,99 +18,76 @@ public class Player extends Character {
     private int pacDotsEaten = 0;
     private boolean consumedPowerPellet;
     private Area area;
+
     private Sound sound;
     private transient FileManager fileManager;
 
     public Player(int speed, Map map) {
         this.map = map;
+        //this.sound = new Sound();
         this.positionX = map.getPlayerSpawnCol();
         this.positionY = map.getPlayerSpawnRow();
         this.speed = speed;
         this.direction = Key.RIGHT;
-        this.imageDirection = "up";
+        this.imageDirection = "arriba";
         this.lastDirection = null;
         this.powerPellet = false;
         this.powerUpCounter = 0;
         this.isAlive = true;
         this.consumedPowerPellet = false;
-        this.fileManager = new FileManager(new File("res/puntuacion.txt"));
+        this.fileManager = new FileManager(new File("C:\\Users\\USER\\projects\\Bibbidi-Bobbidi-Boo\\Bomberman Project\\src\\res\\puntuation.txt"));
         this.highScore = fileManager.getHighScore();
         this.waitTime = calculateTime(3);
-        this.sound = new Sound();
     }
 
     public void setKeyDetector(KeyDetector controls) {
         this.keyDetector = controls;
     }
 
-    @Override
-    public void handlePausedState() {
-        if (keyDetector.key == Key.PAUSE) {
-            keyDetector.key = null;
-            this.paused = !this.paused;
-            if (paused) {
-                sound.stop();
-            } else {
-                sound.play();
-            }
-        }
-
-    }
-
-    /**
-     * Updates the X and Y position of the player on the window basedon user input (pressed movement key - AWSD)
-     */
+    /*
+    Updates the X and Y position of the player on the window based
+    on user input (pressed movement key - AWSD)
+    */
     @Override
     public void update() {
         if (isPaused()) {
             return;
         }
-
         if (!isWaiting) {
             if (sound.isFinished()) {
                 sound.playEffect(TypeOfSound.START_GAME);
             }
-            if (!canTeleport() && !ateAllPacDots()) {
-                direction = getMovement();
+            if (!canTeleport()) {
+                if (ateAllPacDots()) {
+                    //sound.stop();
+                    area.completeArea();
+                    thread = false;
+                    if (area.getNextArea() == null) {
+                        if (fileManager != null) {
+                            fileManager.saveScore(score);
+                            return;
+                        }
+                        fileManager = new FileManager(new File("C:\\Users\\USER\\projects\\Bibbidi-Bobbidi-Boo\\Bomberman Project\\src\\res\\puntuation.txt"));
+                        fileManager.saveScore(score);
+                        return;
+                    }
+                    area.getNextArea().getPlayer().score += this.score;
+                    return;
+                }
+                this.direction = getMovement();
                 if (isAligned()) {
                     getItem();
                 }
                 if (hasPowerPellet()) {
                     activatePowerUp();
                 }
-                move(direction, speed);
-            } else {
-                handleLevelCompletion();
             }
+            move(direction, speed);
         } else {
-            handleWaitingState();
-        }
-        }
-
-    private void handleWaitingState() {
-        if (sound.isFinished()) {
-            sound.playEffect(TypeOfSound.START_GAME);
-        }
-        isTimeUp(waitTime);
-    }
-
-    private void handleLevelCompletion() {
-        area.completeArea();
-        thread = false;
-        if (area.getNextArea() != null) {
-            area.getNextArea().getPlayer().score += this.score;
-        } else {
-            saveScore();
-        }
-    }
-
-    private void saveScore() {
-        sound.stop();
-        if (fileManager != null) {
-            fileManager.saveScore(score);
-        } else {
-            fileManager = new FileManager(new File("res/score.txt"));
-            fileManager.saveScore(score);
+            if (sound.isFinished()) {
+                sound.playEffect(TypeOfSound.START_GAME);
+            }
+            isTimeUp(waitTime);
         }
     }
 
@@ -161,8 +137,8 @@ public class Player extends Character {
         return direction;
     }
 
-    /**
-    * Changes the last direction assigned to the player if it's different from the current direction
+    /*
+    Changes the last direction assigned to the player if it's different from the current direction
     */
     private void updateLastDirection() {
         if (!Objects.equals(this.direction, keyDetector.key)) {
@@ -187,7 +163,7 @@ Can be use for Nagacham
                 fileManager.saveScore(score);
                 return;
             }
-            fileManager = new FileManager(new File("res/score.txt"));
+            fileManager = new FileManager(new File("C:\\Users\\USER\\projects\\Bibbidi-Bobbidi-Boo\\Bomberman Project\\src\\res\\puntuation.txt"));
             fileManager.saveScore(score);
         }
         this.positionX = map.getPlayerSpawnCol();
@@ -263,5 +239,4 @@ Can be use for Nagacham
         return direction;
     }
 }
-
 

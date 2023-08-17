@@ -17,13 +17,13 @@ allows saving a game, loading it, or restarting levels.
 */
 
 public class GamePanel extends JFrame{
-    //private final Sound sound;
     private final Bomberman bomberman;
     private JButton startButton, saveButton, loadButton, resetButton, scoreButton;
     private final JFrame graphicLevel;
     private final InterfaceManager interfaceManager;
     private final ArrayList<Area> areas;
     private Area currentArea;
+    private final Sound sound;
 
     public GamePanel(Bomberman bomberman, Dimension dimension) {
         this.bomberman = bomberman;
@@ -36,17 +36,14 @@ public class GamePanel extends JFrame{
         setMinimumSize(dimension);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Bomberman");
+        setTitle("Pacman");
         setLocationRelativeTo(null);
         setLayout(null);
         addButtons();
         setVisible(true);
-
-
-        //todo: Add sound to the game
-        //sound = new Sound();
-        //sound.loadSounds(Sounds.MENU);
-        // playSoundInLoop();
+        sound = new Sound();
+        sound.getSounds(TypeOfSound.MENU);
+        playSoundInLoop();
     }
 
     private void configureGraphicLevel() {
@@ -57,7 +54,7 @@ public class GamePanel extends JFrame{
     private void addButtons() {
         Font bombermanFont;
         try {
-            bombermanFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/BOMBERMA.TTF"));
+            bombermanFont = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\USER\\projects\\Bibbidi-Bobbidi-Boo\\Bomberman Project\\src\\res\\pixel-nes.otf"));
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -80,7 +77,7 @@ public class GamePanel extends JFrame{
         saveButton = new JButton();
         saveButton.setBounds((getWidth() / 2) - 250, 300, 100, 30);
         saveButton.setFont(bombermanFont.deriveFont(12f));
-        saveButton.setText("Save");
+        saveButton.setText("Guardar");
         saveButton.setForeground(Color.BLACK);
         saveButton.setBackground(new Color(245, 227, 35));
         saveButton.setBorder(new LineBorder(Color.BLACK));
@@ -90,7 +87,7 @@ public class GamePanel extends JFrame{
         loadButton = new JButton();
         loadButton.setBounds((getWidth() / 2) - 50, 300, 100, 30);
         loadButton.setFont(bombermanFont.deriveFont(12f));
-        loadButton.setText("Load Game");
+        loadButton.setText("Cargar");
         loadButton.setForeground(Color.BLACK);
         loadButton.setBackground(new Color(245, 203, 98));
         loadButton.setBorder(new LineBorder(Color.BLACK));
@@ -165,12 +162,12 @@ public class GamePanel extends JFrame{
             if (currentArea == null) {
                 return;
             }
-            //stopSound();
+            stopSound();
             manageArea(currentArea);
             dispose();
         });
         scoreButton.addActionListener(e -> {
-            //stopSound();
+            stopSound();
             Scoreboard score = new Scoreboard(menu);
             score.showScores();
             dispose();
@@ -236,17 +233,17 @@ public class GamePanel extends JFrame{
         this.add(label2);
     }
 
-//    public void playSoundInLoop() {
-//        sound.runInLoop();
-//    }
-//
-//    public void stopSound() {
-//        sound.stop();
-//    }
-//
-//    public void reconfigure() {
-//        setVisible(true);
-//        playSoundInLoop();
-//    }
+    public void playSoundInLoop() {
+        sound.loop();
+    }
+
+    public void stopSound() {
+        sound.stop();
+    }
+
+    public void reconfigure() {
+        setVisible(true);
+        playSoundInLoop();
+    }
 
 }

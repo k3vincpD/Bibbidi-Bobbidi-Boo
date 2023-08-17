@@ -13,7 +13,7 @@ Window that show the top 10 highscores in the game
 */
 
 public class Scoreboard extends JFrame {
-    private File file = new File("res/puntuacion.txt");
+    private File file = new File("C:\\Users\\USER\\projects\\Bibbidi-Bobbidi-Boo\\Bomberman Project\\src\\res\\puntuation.txt");
     private ArrayList<String> data;
     private final JPanel panel;
     private JButton backButton;
@@ -32,8 +32,8 @@ public class Scoreboard extends JFrame {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setFont(bombermanFont.deriveFont(18f));
                 g2.setColor(Color.YELLOW);
-                int textWidth = g2.getFontMetrics().stringWidth("SCORES");
-                g2.drawString("SCORES", (getWidth() / 2) - (textWidth / 2), 36);
+                int textWidth = g2.getFontMetrics().stringWidth("PUNTUACIONES");
+                g2.drawString("PUNTUACIONES", (getWidth() / 2) - (textWidth / 2), 36);
                 g2.setColor(Color.WHITE);
                 int i = 1;
                 for (String line : data) {
@@ -51,7 +51,7 @@ public class Scoreboard extends JFrame {
         add(panel);
         setMinimumSize(new Dimension(440, 620));
         setResizable(false);
-        setTitle("Score");
+        setTitle("Puntuacion");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -74,7 +74,7 @@ public class Scoreboard extends JFrame {
 
     private void loadFont() {
         try {
-            bombermanFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/pixel-nes.otf"));
+            bombermanFont = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\USER\\projects\\Bibbidi-Bobbidi-Boo\\Bomberman Project\\src\\res\\pixel-nes.otf"));
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

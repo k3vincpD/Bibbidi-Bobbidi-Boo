@@ -41,12 +41,12 @@ public class FileManager implements Serializable {
         }
         Collections.sort(scores);
         if (score >= scores.get(0) || scores.size() < 10) {
-            JFrame frame = new JFrame("Save Score");
+            JFrame frame = new JFrame("Guardar Puntuacion");
             JLabel label = new JLabel();
             JLabel label2 = new JLabel();
             JPanel panel = new JPanel();
             JTextField nameField = new JTextField();
-            JButton saveButton = new JButton("Save Score");
+            JButton saveButton = new JButton("Puntaje Guardar");
 
 
             frame.setSize(500, 700);
@@ -58,10 +58,10 @@ public class FileManager implements Serializable {
             panel.setBackground(Color.BLACK);
 
             label.setBounds(60, 60, 400, 200);
-            label.setText("> ENTER YOUR NAME <");
+            label.setText("> INGRESA TU NOMBRE <");
             label.setFont(new Font("Creepster", 1, 30));
             label2.setBounds(150, 250, 400, 200);
-            label2.setText(score + " POINTS");//
+            label2.setText(score + " PUNTOS");//
             label2.setFont(new Font("Creepster", 1, 30));
 
 

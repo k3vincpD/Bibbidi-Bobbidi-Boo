@@ -133,31 +133,31 @@ public class MapGraphicInterface extends GraphicInterface implements Runnable {
     }
 
     public void loadFruits() {
-        String imageDir = "apple";
+        String imageDir = "manzana";
         try {
-            this.fruit = ImageIO.read(getClass().getResourceAsStream("/res/fruits/" + imageDir + ".png"));
+            this.fruit = ImageIO.read(getClass().getResourceAsStream("/res/frutas/" + imageDir + ".png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void getMapImage() {
-        String imageDir = "map";
+        String imageDir = "laberinto";
         try {
             walls[0] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/normal_x.png"));
             walls[1] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/normal_y.png"));
-            walls[2] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/right_edge.png"));
-            walls[3] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/left_edge.png"));
-            walls[4] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/bottom_left.png"));
-            walls[5] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/bottom_right.png"));
-            walls[6] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/corner_bottom.png"));
-            walls[7] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/corner_top.png"));
-            walls[8] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/corner_left.png"));
-            walls[9] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/corner_right.png"));
-            walls[10] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/top.png"));
-            walls[11] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/bottom.png"));
-            walls[12] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/left.png"));
-            walls[13] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/right.png"));
+            walls[2] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/arista_derecha.png"));
+            walls[3] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/arista_izquierda.png"));
+            walls[4] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/arista_abajoI.png"));
+            walls[5] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/arista_abajoD.png"));
+            walls[6] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/esquina_abajo.png"));
+            walls[7] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/esquina_arriba.png"));
+            walls[8] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/esquina_izquierda.png"));
+            walls[9] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/esquina_derecha.png"));
+            walls[10] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/arriba.png"));
+            walls[11] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/abajo.png"));
+            walls[12] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/izquierda.png"));
+            walls[13] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDir + "/derecha.png"));
 
         } catch (IOException e) {
             e.printStackTrace();

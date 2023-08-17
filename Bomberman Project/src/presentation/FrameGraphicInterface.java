@@ -16,8 +16,8 @@ import java.io.IOException;
 public class FrameGraphicInterface extends GraphicInterface {
     private Player player;
     private Map map;
-    private BufferedImage bombermanSkinImage;
-    private Font bombermanFont;
+    private BufferedImage pacmanSkinImage;
+    private Font pacManFont;
 
     public FrameGraphicInterface() {
         super();
@@ -27,7 +27,7 @@ public class FrameGraphicInterface extends GraphicInterface {
 
     private void loadImages() {
         try {
-            bombermanSkinImage = ImageIO.read(getClass().getResourceAsStream("/res/pacman/pacman_right_1.png"));
+            pacmanSkinImage = ImageIO.read(getClass().getResourceAsStream("/res/pacman/pacman_derecha_1.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -35,7 +35,7 @@ public class FrameGraphicInterface extends GraphicInterface {
 
     private void loadFont() {
         try {
-            bombermanFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/BOMBERMA.TTF"));
+            pacManFont = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\USER\\projects\\Bibbidi-Bobbidi-Boo\\Bomberman Project\\src\\res\\pixel-nes.otf"));
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -45,26 +45,26 @@ public class FrameGraphicInterface extends GraphicInterface {
 
     @Override
     public void drawSprite(Graphics2D g2) {
-        g2.setFont(bombermanFont.deriveFont(18f));
+        g2.setFont(pacManFont.deriveFont(18f));
         g2.setColor(Color.white);
         g2.drawString(String.valueOf(player.score), 12, 40);
-        g2.drawString("SCHOLARSHIP NOTE", ((map.getColumns() - 6) * 24) / 2, 20);
+        g2.drawString("NOTA BECADO", ((map.getColumns() - 6) * 24) / 2, 20);
         g2.drawString(String.valueOf(player.highScore), ((map.getColumns() - 2) * 24) / 2, 40);
         if (player.isWaiting() && player.getLives() > 0) {
             g2.setColor(Color.YELLOW);
-            g2.drawString("SEMESTER STARTS", map.getReadyMessageCol() - 94, map.getReadyMessageRow());
+            g2.drawString("COMIENZA EL SEMESTRE", map.getReadyMessageCol() - 94, map.getReadyMessageRow());
         } else if (player.getLives() == 0) {
             g2.setColor(Color.RED);
-            g2.drawString("YOU FAILED THE SEMESTER", map.getReadyMessageCol() - 94, map.getReadyMessageRow());
+            g2.drawString("TE JALASTE EL SEMESTRE", map.getReadyMessageCol() - 94, map.getReadyMessageRow());
         } else if (player.ateAllPacDots()) {
             g2.setColor(Color.pink);
-            g2.drawString("PASSED THE SEMESTER", map.getReadyMessageCol() - 86, map.getReadyMessageRow());
-        } else if (player.isPaused() && !player.isWaiting()) {
+            g2.drawString("PASASTE EL SEMESTRE", map.getReadyMessageCol() - 86, map.getReadyMessageRow());
+        } else if (player.isItPaused() && !player.isWaiting()) {
             g2.setColor(Color.GRAY);
-            g2.drawString("TOOK A BREAK", map.getReadyMessageCol() - 60, map.getReadyMessageRow());
+            g2.drawString("TOMASTE UN BREAK", map.getReadyMessageCol() - 60, map.getReadyMessageRow());
         }
         for (int i = 1; i < player.getLives(); i++) {
-            g2.drawImage(bombermanSkinImage, 24 * i, (map.getRows() * 24) - 24, null);
+            g2.drawImage(pacmanSkinImage, 24 * i, (map.getRows() * 24) - 24, null);
         }
     }
 

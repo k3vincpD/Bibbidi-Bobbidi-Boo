@@ -1,17 +1,20 @@
 package logic;
 
 import presentation.KeyDetector;
+import java.io.Serializable;
 
-/**
- * Logic class representing a Bomberman level, consisting of: the player, the 4 basic Enemies, and a Map.
- */
+/*
+Logic class representing a Bomberman level,
+consisting of: the player, the 4 basic Enemies, and a Map.
+*/
+
 public class Area {
     private Difficulty difficulty;
     private String mapDirection;
     private boolean completed;
     private Area nextArea;
     private Player player;
-    private Enemy ballom, boyon, terupyo, nagacham;
+    private Enemy ballom, boyon, terupyo,nagacham;
     private Map map;
     private transient Thread playerLogicThread, ballomLogicThread, boyonLogicThread, terupyoLogicThread, nagachamLogicThread;
     private static final int FPS = 60;
@@ -22,7 +25,7 @@ public class Area {
         this.mapDirection = mapDirection;
         map = new Map(mapDirection);
 
-        // Initialize Characters
+        //Characters
         player = new Player(difficulty.getSpeedValue(), map);
         ballom = new Ballom(difficulty.getSpeedValue(), map, player);
         boyon = new Boyon(difficulty.getSpeedValue(), map, player);
@@ -31,24 +34,18 @@ public class Area {
     }
 
     public void startArea(KeyDetector controls) {
-        startCharacterThreads(controls);
-    }
-
-    private void startCharacterThreads(KeyDetector controls) {
         player.thread = true;
         ballom.thread = true;
         boyon.thread = true;
         terupyo.thread = true;
         nagacham.thread = true;
-
         playerLogicThread = new Thread(player);
         ballomLogicThread = new Thread(ballom);
         boyonLogicThread = new Thread(boyon);
         terupyoLogicThread = new Thread(terupyo);
         nagachamLogicThread = new Thread(nagacham);
-
-        initializeCharacters(controls);
-
+        player.setArea(this);
+        player.setKeyDetector(controls);
         playerLogicThread.start();
         ballomLogicThread.start();
         boyonLogicThread.start();
@@ -56,21 +53,12 @@ public class Area {
         nagachamLogicThread.start();
     }
 
-    private void initializeCharacters(KeyDetector controls) {
-        player.setArea(this);
-        player.setKeyDetector(controls);
-    }
-
-    public void stop() {
+    public void stop(){
         player.stopSound();
         player.paused = true;
     }
 
-    public void finish() {
-        stopCharacterThreads();
-    }
-
-    private void stopCharacterThreads() {
+    public void finish(){
         player.thread = false;
         ballom.thread = false;
         boyon.thread = false;
@@ -95,7 +83,7 @@ public class Area {
     }
 
     public Difficulty getDifficulty() {
-        return difficulty;
+        return this.difficulty;
     }
 
     public String getMapDirection() {
@@ -105,11 +93,9 @@ public class Area {
     public static int getEntitySize() {
         return ENTITY_SIZE;
     }
-
     public Player getPlayer() {
         return player;
     }
-
     public Enemy getBallom() {
         return ballom;
     }

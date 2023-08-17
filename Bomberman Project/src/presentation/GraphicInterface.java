@@ -73,14 +73,14 @@ public abstract class GraphicInterface {
      */
     public void getSprite(String imageDirection, BufferedImage[] sprites) {
         try {
-            sprites[0] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_up_1.png"));
-            sprites[1] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_up_2.png"));
-            sprites[2] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_down_1.png"));
-            sprites[3] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_down_2.png"));
-            sprites[4] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_left_1.png"));
-            sprites[5] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_left_2.png"));
-            sprites[6] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_right_1.png"));
-            sprites[7] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_right_2.png"));
+            sprites[0] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_arriba_1.png"));
+            sprites[1] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_arriba_2.png"));
+            sprites[2] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_abajo_1.png"));
+            sprites[3] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_abajo_2.png"));
+            sprites[4] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_izquierda_1.png"));
+            sprites[5] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_izquierda_2.png"));
+            sprites[6] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_derecha_1.png"));
+            sprites[7] = ImageIO.read(getClass().getResourceAsStream("/res/" + imageDirection + "/" + imageDirection + "_derecha_2.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

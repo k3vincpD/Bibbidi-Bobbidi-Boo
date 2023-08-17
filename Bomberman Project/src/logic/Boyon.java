@@ -1,24 +1,21 @@
 package logic;
 
 public class Boyon extends Enemy {
-
     public Boyon(int speedValue, Map map, Player player) {
-        super(speedValue, map, player, 0);
-        moveByPersonality();
+        super(speedValue,map, player, 1);
+        this.spawnColumn=map.getBoyonDotCol();
+        this.spawnRow=map.getBoyonDotRow();
     }
 
     @Override
     public void moveByPersonality() {
-        moveRandomly();
-    }
-
-    public void moveRandomly() {
-        Key newDirection = getRandomValidDirection(direction);
-        move(newDirection, speed);
-    }
-
-    @Override
-    public void handlePausedState() {
+        if (!canTeleport()) {
+            if (isAligned()) {
+                previousDirection = direction;
+                direction = getBestDirection(player.getColumnMap(), player.getRowMap());
+            }
+        }
+        move(direction, speed);
     }
 
 }

@@ -72,7 +72,7 @@ public class InterfaceManager extends JPanel{
     public void configureButton() {
         Font bombermanFont;
         try {
-            bombermanFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/pixel-nes.otf"));
+            bombermanFont = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\USER\\projects\\Bibbidi-Bobbidi-Boo\\Bomberman Project\\src\\res\\pixel-nes.otf"));
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

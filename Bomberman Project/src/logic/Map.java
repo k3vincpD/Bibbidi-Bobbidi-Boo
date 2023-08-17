@@ -2,10 +2,8 @@ package logic;
 
 import exceptions.NotSymmetricNumberOfColumnsException;
 
-import javax.swing.text.Position;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 /*
 Class that contains a map, two-dimensional array of numbers that is obtained from a txt file
@@ -203,38 +201,6 @@ public class Map implements Serializable {
 
     public int getColumns() {
         return map[0].length;
-    }
-
-    public void clearBombAtPosition(Bomb bomb) {
-        map[bomb.getRowMap()][bomb.getColumnMap()] = 0;
-    }
-
-    public List<Position> getExplosionPositions() {
-        List<Position> explosionPositions = new ArrayList<>();
-        for (int row = 0; row < getRows(); row++) {
-            for (int column = 0; column < getColumns(); column++) {
-                if (map[row][column] == 3) {
-                    explosionPositions.add(() -> {
-                        return 0;
-                    });
-                }
-            }
-        }
-        return explosionPositions;
-    }
-
-
-
-    public int getRowForPosition(Bomb bomb) {
-        return bomb.getRowMap();
-    }
-
-    public int getColumnForPosition(Bomb bomb) {
-        return bomb.getColumnMap();
-    }
-
-    public void setExplosionAtPosition(int bombRow, int bombCol) {
-        //TODO: Implement the logic to set explosion at the given position
     }
 }
 
