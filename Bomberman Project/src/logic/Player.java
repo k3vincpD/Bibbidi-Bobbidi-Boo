@@ -54,9 +54,9 @@ public class Player extends Character {
             return;
         }
         if (!isWaiting) {
-            if (sound.isFinished()) {
+            /*if (sound.isFinished()) {
                 sound.playEffect(TypeOfSound.START_GAME);
-            }
+            }*/
             if (!canTeleport()) {
                 if (ateAllPacDots()) {
                     //sound.stop();
@@ -84,9 +84,9 @@ public class Player extends Character {
             }
             move(direction, speed);
         } else {
-            if (sound.isFinished()) {
+            /*if (sound.isFinished()) {
                 sound.playEffect(TypeOfSound.START_GAME);
-            }
+            }*/
             isTimeUp(waitTime);
         }
     }
@@ -95,11 +95,11 @@ public class Player extends Character {
         if (keyDetector.key == Key.PAUSE) {
             keyDetector.key = null;
             this.paused = !this.paused;
-            if (paused) {
+            /*if (paused) {
                 sound.stop();
             } else {
                 sound.play();
-            }
+            }*/
         }
         return this.paused;
     }
@@ -150,15 +150,15 @@ public class Player extends Character {
 Can be use for Nagacham
 */
     public void reappear() {
-        sound.stop();
-        sound.playEffect(TypeOfSound.DEATH);
+        //sound.stop();
+        //sound.playEffect(TypeOfSound.DEATH);
         powerPellet = false;
         powerUpCounter = 0;
         lives -= 1;
         if (lives == 0) {
             thread = false;
-            sound.playEffect(TypeOfSound.DEATH);
-            sound.stop();
+            //sound.playEffect(TypeOfSound.DEATH);
+            //sound.stop();
             if (fileManager != null) {
                 fileManager.saveScore(score);
                 return;
@@ -177,14 +177,14 @@ Can be use for Nagacham
     */
     public void activatePowerUp() {
         if (powerUpCounter == 0) {
-            sound.stop();
+            /*sound.stop();
             sound.getSounds(TypeOfSound.POWER_UP);
-            sound.loop();
+            sound.loop();*/
             bonusForEnemyKilled = 1;
             consumedPowerPellet = true;
         }
         if (powerUpCounter == POWER_PELLET_DURATION) {
-            sound.stop();
+            //sound.stop();
             this.powerPellet = false;
             bonusForEnemyKilled = 1;
             powerUpCounter = 0;
@@ -202,7 +202,7 @@ Can be use for Nagacham
         if (counter == waitTime) {
             isWaiting = false;
             counter = 0;
-            sound.stop();
+            //sound.stop();
             return true;
         }
         if (counter == 10) {

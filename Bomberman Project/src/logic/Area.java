@@ -54,7 +54,7 @@ public class Area {
     }
 
     public void stop(){
-        player.stopSound();
+        //player.stopSound();
         player.paused = true;
     }
 
