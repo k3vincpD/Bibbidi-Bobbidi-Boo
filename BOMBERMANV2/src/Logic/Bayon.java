@@ -4,16 +4,14 @@ import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public class Ballom extends Enemy {
+public class Bayon extends Enemy {
 
     private BufferedImage[][] sprites;
 
-
-    public Ballom(Point2D.Float position, BufferedImage[][] spriteMap) {
+    public Bayon(Point2D.Float position, BufferedImage[][] spriteMap) {
         super(position, spriteMap[1][0]);
         updateCollider();
         this.sprites = spriteMap;
-
     }
 
     @Override
@@ -25,7 +23,6 @@ public class Ballom extends Enemy {
         } else {
             updateDeadSprite();
         }
-
     }
 
     private void updateSprite() {
