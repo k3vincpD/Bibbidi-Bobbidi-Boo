@@ -1,0 +1,97 @@
+
+q
+java:S1104"VMake SpriteMaps a static final constant or non-public and provide accessors if needed.(³¨Ìºøÿÿÿÿ
+h
+java:S1104"RMake Images a static final constant or non-public and provide accessors if needed.(ğÚêÖ
+l
+java:S1104"QMake Files a static final constant or non-public and provide accessors if needed.(Ò¹À¡ÿÿÿÿÿ
+K
+java:S1444"0Make this "public static SpriteMaps" field final(³¨Ìºøÿÿÿÿ
+B
+java:S1444",Make this "public static Images" field final(ğÚêÖ
+F
+java:S1444"+Make this "public static Files" field final(Ò¹À¡ÿÿÿÿÿ
+p
+java:S3008"URename this field "SpriteMaps" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³¨Ìºøÿÿÿÿ
+g
+java:S3008"QRename this field "Images" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÚêÖ
+k
+java:S3008"PRename this field "Files" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ò¹À¡ÿÿÿÿÿ
+U
+java:S1118":Add a private constructor to hide the implicit public one.(ë£©›üÿÿÿÿ
+S	java:S106!"9Replace this use of System.out or System.err by a logger.(¯€ˆ‹üÿÿÿÿ
+K
+java:S2209""5Change this instance-reference to a static reference.(Ìú˜¿
+P
+java:S2209#"5Change this instance-reference to a static reference.(¨Ë’¡ıÿÿÿÿ
+P
+java:S2209$"5Change this instance-reference to a static reference.(€ûâ”üÿÿÿÿ
+P
+java:S2209%"5Change this instance-reference to a static reference.(©‰›öıÿÿÿÿ
+P
+java:S2209&"5Change this instance-reference to a static reference.(ñ£¤Æşÿÿÿÿ
+K
+java:S2209'"5Change this instance-reference to a static reference.(°­‡’
+K
+java:S2209("5Change this instance-reference to a static reference.(—Äíü
+J
+java:S2209)"5Change this instance-reference to a static reference.(¨ßö%
+K
+java:S2209*"5Change this instance-reference to a static reference.(‹á«
+K
+java:S2209+"5Change this instance-reference to a static reference.(Î´ûæ
+P
+java:S2209-"5Change this instance-reference to a static reference.(¸»Üùıÿÿÿÿ
+P
+java:S2209."5Change this instance-reference to a static reference.(•æõĞùÿÿÿÿ
+K
+java:S2209/"5Change this instance-reference to a static reference.(ïúêƒ
+P
+java:S22090"5Change this instance-reference to a static reference.(ä“Åœşÿÿÿÿ
+K
+java:S22091"5Change this instance-reference to a static reference.(¬æğ¸
+K
+java:S22092"5Change this instance-reference to a static reference.(ş›¹š
+P
+java:S22093"5Change this instance-reference to a static reference.(ÈÄ‚Šÿÿÿÿÿ
+P
+java:S22094"5Change this instance-reference to a static reference.(Ïß”Éüÿÿÿÿ
+K
+java:S22096"5Change this instance-reference to a static reference.(²é›
+N	java:S1068"9Replace this use of System.out or System.err by a logger.(Ş“Øİ
+P
+java:S2209A"5Change this instance-reference to a static reference.(ĞŠ‡Åøÿÿÿÿ
+P
+java:S2209A"5Change this instance-reference to a static reference.(ĞŠ‡Åøÿÿÿÿ
+P
+java:S2209B"5Change this instance-reference to a static reference.(‰šâêúÿÿÿÿ
+P
+java:S2209B"5Change this instance-reference to a static reference.(‰šâêúÿÿÿÿ
+P
+java:S2209C"5Change this instance-reference to a static reference.(®şÆ“üÿÿÿÿ
+P
+java:S2209C"5Change this instance-reference to a static reference.(®şÆ“üÿÿÿÿ
+P
+java:S2209D"5Change this instance-reference to a static reference.(ø•£ìıÿÿÿÿ
+P
+java:S2209D"5Change this instance-reference to a static reference.(ø•£ìıÿÿÿÿ
+K
+java:S2209E"5Change this instance-reference to a static reference.(‰šıò
+K
+java:S2209E"5Change this instance-reference to a static reference.(‰šıò
+K
+java:S2209F"5Change this instance-reference to a static reference.(ê¯ğ 
+K
+java:S2209F"5Change this instance-reference to a static reference.(ê¯ğ 
+P
+java:S2209G"5Change this instance-reference to a static reference.(ûÇ¹İüÿÿÿÿ
+P
+java:S2209G"5Change this instance-reference to a static reference.(ûÇ¹İüÿÿÿÿ
+K
+java:S2209H"5Change this instance-reference to a static reference.(êİğÃ
+K
+java:S2209H"5Change this instance-reference to a static reference.(êİğÃ
+K
+java:S2209I"5Change this instance-reference to a static reference.(†óúÕ
+8
+java:S1128""Remove this unused import 'Logic'.(Ù›óÚ

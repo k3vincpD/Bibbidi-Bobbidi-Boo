@@ -1,0 +1,38 @@
+
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‘÷ÿ^
+i
+java:S1450	"SRemove the "bomb" field and declare it as a local variable in the relevant methods.(…ì»†
+C
+java:S1905<"(Remove this unnecessary cast to "float".(«Åü‰¯ˇˇˇˇ
+C
+java:S1905="(Remove this unnecessary cast to "float".(˚®Ó®˛ˇˇˇˇ
+B
+java:S1905A"-Remove this unnecessary cast to "GameObject".(®•Ó
+S	java:S106Q"9Replace this use of System.out or System.err by a logger.(‘ÓÌ◊¯ˇˇˇˇ
+N	java:S106T"9Replace this use of System.out or System.err by a logger.(òÄœÅ
+S	java:S106X"9Replace this use of System.out or System.err by a logger.(∂„É¸ˇˇˇˇ
+N	java:S106Z"9Replace this use of System.out or System.err by a logger.(óˇﬂ√
+N	java:S106^"9Replace this use of System.out or System.err by a logger.(ÂÜÒ–
+S	java:S106`"9Replace this use of System.out or System.err by a logger.(ûˆ»À˚ˇˇˇˇ
+S	java:S106d"9Replace this use of System.out or System.err by a logger.(û¬À§¯ˇˇˇˇ
+S	java:S106f"9Replace this use of System.out or System.err by a logger.(™ÀÙ∏˘ˇˇˇˇ
+S	java:S106j"9Replace this use of System.out or System.err by a logger.(õ§·”˛ˇˇˇˇ
+S	java:S106l"9Replace this use of System.out or System.err by a logger.(œ‘Ú‚˝ˇˇˇˇ
+N	java:S106p"9Replace this use of System.out or System.err by a logger.(ë±›ﬁ
+M	java:S106r"9Replace this use of System.out or System.err by a logger.(ò‹ÅK
+h
+java:S3776}"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(÷◊ıƒ
+P
+java:S1161}":Add the "@Override" annotation above this method signature(÷◊ıƒ
+?
+java:S1905Ä"(Remove this unnecessary cast to "float".(≤’‡‡
+Q
+java:S1161≠":Add the "@Override" annotation above this method signature(˚≠¢¬
+V
+java:S1161±":Add the "@Override" annotation above this method signature(‡ÏÓ”˙ˇˇˇˇ
+n
+java:S3776π"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(å∆ëﬁˇˇˇˇˇ
+V
+java:S1161π":Add the "@Override" annotation above this method signature(å∆ëﬁˇˇˇˇˇ
+Q
+java:S1161ÿ":Add the "@Override" annotation above this method signature(ó«≥¢

@@ -1,0 +1,8 @@
+
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÔÖØ^
+h	java:S116"TRename this field "UpPressed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡ñ“x
+k	java:S116"VRename this field "DownPressed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ÄÓà
+k	java:S116	"VRename this field "LeftPressed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷±É“
+q	java:S116
+"WRename this field "RightPressed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒÔûÿÿÿÿ
+m	java:S116"XRename this field "ActionPressed" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìù÷¡

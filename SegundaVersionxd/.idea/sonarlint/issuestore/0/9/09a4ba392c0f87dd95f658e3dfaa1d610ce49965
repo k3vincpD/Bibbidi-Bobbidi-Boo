@@ -1,0 +1,7 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(••¯Þ
+P
+java:S2209"5Change this instance-reference to a static reference.(èÝ¾÷øÿÿÿÿ
+^
+java:S3252"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(ºÀœx
+S	java:S106-"9Replace this use of System.out or System.err by a logger.(Õ–žœøÿÿÿÿ

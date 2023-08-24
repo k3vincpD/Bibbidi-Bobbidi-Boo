@@ -1,0 +1,41 @@
+
+
+java:S1319"kThe type of "tileObjects" should be an interface such as "List" rather than the implementation "ArrayList".(Ó¬’Ñ
+†
+java:S1319"pThe type of "explosionObjects" should be an interface such as "List" rather than the implementation "ArrayList".(ìùôï
+ƒ
+java:S1319"mThe type of "bomberObjects" should be an interface such as "List" rather than the implementation "ArrayList".(êªßÂ
+ƒ
+java:S1319"mThe type of "enemy1Objects" should be an interface such as "List" rather than the implementation "ArrayList".(•ÿŸ’
+r
+java:S1104"WMake gameObjects a static final constant or non-public and provide accessors if needed.(„ã“¤ûÿÿÿÿ
+m
+java:S1104"WMake tileObjects a static final constant or non-public and provide accessors if needed.(Ó¬’Ñ
+r
+java:S1104"\Make explosionObjects a static final constant or non-public and provide accessors if needed.(ìùôï
+o
+java:S1104"YMake bomberObjects a static final constant or non-public and provide accessors if needed.(êªßÂ
+v
+java:S1104"YMake enemy1Objects a static final constant or non-public and provide accessors if needed.(•ÿŸ’8ÌƒŸ1
+L
+java:S1444"1Make this "public static gameObjects" field final(„ã“¤ûÿÿÿÿ
+G
+java:S1444"1Make this "public static tileObjects" field final(Ó¬’Ñ
+L
+java:S1444"6Make this "public static explosionObjects" field final(ìùôï
+I
+java:S1444"3Make this "public static bomberObjects" field final(êªßÂ
+P
+java:S1444"3Make this "public static enemy1Objects" field final(•ÿŸ’8ÍƒŸ1
+P
+java:S1118":Add a private constructor to hide the implicit public one.(Ï¡„
+<
+java:S2386"&Make member "gameObjects" "protected".(Çï«
+A
+java:S2386"&Make member "tileObjects" "protected".(ñÁÃ´øÿÿÿÿ
+F
+java:S2386"+Make member "explosionObjects" "protected".(å¯ó¸úÿÿÿÿ
+C
+java:S2386"(Make member "bomberObjects" "protected".(Â§Ùåøÿÿÿÿ
+D
+java:S2386 "(Make member "enemy1Objects" "protected".(”ÌÒi8„Ÿ1

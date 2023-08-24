@@ -1,0 +1,14 @@
+
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÔÖØ^
+Q
+java:S11193";Refactor the code to remove this label and the need for it.(ùŒ­“
+K
+java:S2209S"5Change this instance-reference to a static reference.(‰Ó¤°
+R
+java:S1119š";Refactor the code to remove this label and the need for it.(ùŒ­“
+L
+java:S2209º"5Change this instance-reference to a static reference.(‰Ó¤°
+Q
+java:S2209ì"5Change this instance-reference to a static reference.(Õ¥æÑøÿÿÿÿ
+V
+java:S1161˜":Add the "@Override" annotation above this method signature(‡ÎÎ¾þÿÿÿÿ

@@ -1,4 +1,5 @@
-Juan, 1000
 Felipe, 2000
-Juan, 1000
 Felipe, 2000
+F 1370
+Juan, 1000
+Juan, 1000

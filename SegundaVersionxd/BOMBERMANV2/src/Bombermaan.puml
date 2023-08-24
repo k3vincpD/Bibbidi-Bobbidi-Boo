@@ -1,0 +1,83 @@
+@startuml
+package Logic {
+
+    abstract class Ballom{
+    }
+
+    class Bomb{
+    }
+
+    class Bomber{
+    }
+
+    interface Collidable{
+    }
+
+    abstract class Enemy{
+    }
+
+    abstract class Explosion{
+    }
+
+    class ExplosionHorizontal{
+    }
+
+    class ExplosionVertical{
+    }
+
+    enum Files{
+    }
+
+    abstract class GameObject{
+    }
+
+    enum KickDirection{
+    }
+
+    interface Observable{
+    }
+
+    abstract class Player{
+    }
+
+    class PowerUp{
+    }
+
+    abstract class TileObject{
+    }
+
+    class Wall{
+    }
+}
+
+package Gamepad{
+
+    class GameController{
+    }
+
+    class GameHUD{
+    }
+
+    class GameLauncher{
+    }
+
+    class GamePanel{
+    }
+
+    class GameWindow{
+    }
+
+    class PlayerController{
+    }
+}
+
+package Presentation{
+
+    class GameObjectCollection{
+    }
+
+    
+}
+
+
+@enduml

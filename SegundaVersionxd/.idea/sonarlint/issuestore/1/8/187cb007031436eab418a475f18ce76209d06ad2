@@ -1,0 +1,20 @@
+
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÔÖØ^8—£œ‹Ÿ1
+|
+java:S1450"ZRemove the "spriteIndex" field and declare it as a local variable in the relevant methods.(ì²îñûÿÿÿÿ8›£œ‹Ÿ1
+[
+java:S5993"9Change the visibility of this constructor to "protected".(™Ç îüÿÿÿÿ8›£œ‹Ÿ1
+W
+java:S1161 ":Add the "@Override" annotation above this method signature(û­¢Â8œ£œ‹Ÿ1
+\
+java:S1161$":Add the "@Override" annotation above this method signature(àìîÓúÿÿÿÿ8œ£œ‹Ÿ1
+\
+java:S1161,":Add the "@Override" annotation above this method signature(ŒÆ‘Şÿÿÿÿÿ8£œ‹Ÿ1
+\
+java:S11610":Add the "@Override" annotation above this method signature(†ì†úÿÿÿÿ8£œ‹Ÿ1
+X
+java:S1128"6Remove this unused import 'java.awt.geom.Rectangle2D'.(Å‰Ÿıÿÿÿÿ8£œ‹Ÿ1
+Q
+java:S1068"/Remove this unused "spriteIndex" private field.(ì²îñûÿÿÿÿ8£œ‹Ÿ1
+O
+java:S1068"-Remove this unused "moveSpeed" private field.(ğ éùÿÿÿÿ8£œ‹Ÿ1

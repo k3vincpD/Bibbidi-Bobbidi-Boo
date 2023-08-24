@@ -1,0 +1,17 @@
+
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÔÖØ^
+C
+java:S1185"(Remove this method to simply inherit it.(É©¿Áùÿÿÿÿ
+C
+java:S1185"(Remove this method to simply inherit it.(¸¦£îøÿÿÿÿ
+C
+java:S1185)"(Remove this method to simply inherit it.(†ì†úÿÿÿÿ
+>
+java:S2140/")Use "java.util.Random.nextInt()" instead.(âÍ°
+<	java:S1310""Add a default case to this switch.(Æóõµıÿÿÿÿ
+D
+java:S1128")Remove this unused import 'presentation'.(™‘ğÈüÿÿÿÿ
+Q
+java:S1128"6Remove this unused import 'java.awt.geom.Rectangle2D'.(Å‰Ÿıÿÿÿÿ
+A
+java:S1068"+Remove this unused "sprites" private field.(œ‚³·

@@ -1,0 +1,118 @@
+
+n	java:S127ø"XRefactor the code in order to not assign to this loop counter from within the loop body.(çù˜…
+c
+java:S2184€"GCast one of the operands of this multiplication operation to a "float".(è°¨”üÿÿÿÿ
+c
+java:S2184€"GCast one of the operands of this multiplication operation to a "float".(è°¨”üÿÿÿÿ
+^
+java:S2184•"GCast one of the operands of this multiplication operation to a "float".(úú€
+^
+java:S2184•"GCast one of the operands of this multiplication operation to a "float".(úú€
+c
+java:S2184›"GCast one of the operands of this multiplication operation to a "float".(úÓ¾úÿÿÿÿ
+`
+java:S2184›"DCast one of the operands of this subtraction operation to a "float".(úÓ¾úÿÿÿÿ
+c
+java:S2184¤"GCast one of the operands of this multiplication operation to a "float".(™ë§»ÿÿÿÿÿ
+`
+java:S2184¤"DCast one of the operands of this subtraction operation to a "float".(™ë§»ÿÿÿÿÿ
+]
+java:S2184«"GCast one of the operands of this multiplication operation to a "float".(íå{
+Z
+java:S2184«"DCast one of the operands of this subtraction operation to a "float".(íå{
+^
+java:S2184´"GCast one of the operands of this multiplication operation to a "float".(²ğê€
+[
+java:S2184´"DCast one of the operands of this subtraction operation to a "float".(²ğê€
+^
+java:S2184¼"GCast one of the operands of this multiplication operation to a "float".(àú £
+^
+java:S2184¼"GCast one of the operands of this multiplication operation to a "float".(àú £
+^
+java:S2184Á"GCast one of the operands of this multiplication operation to a "float".(À„ÅÁ
+^
+java:S2184Á"GCast one of the operands of this multiplication operation to a "float".(À„ÅÁ
+]
+java:S2184Æ"GCast one of the operands of this multiplication operation to a "float".(ş¸Ö
+]
+java:S2184Æ"GCast one of the operands of this multiplication operation to a "float".(ş¸Ö
+^
+java:S2184Ë"GCast one of the operands of this multiplication operation to a "float".(”ŸĞ¯
+^
+java:S2184Ë"GCast one of the operands of this multiplication operation to a "float".(”ŸĞ¯
+c
+java:S2184Ğ"GCast one of the operands of this multiplication operation to a "float".(Ù¢åŒşÿÿÿÿ
+c
+java:S2184Ğ"GCast one of the operands of this multiplication operation to a "float".(Ù¢åŒşÿÿÿÿ
+^
+java:S2184Õ"GCast one of the operands of this multiplication operation to a "float".(ñŞÙ­
+^
+java:S2184Õ"GCast one of the operands of this multiplication operation to a "float".(ñŞÙ­
+^
+java:S2184Ú"GCast one of the operands of this multiplication operation to a "float".(–¢ÅŠ
+^
+java:S2184Ú"GCast one of the operands of this multiplication operation to a "float".(–¢ÅŠ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(••¯Ş
+p
+java:S1450!"URemove the "buffer" field and declare it as a local variable in the relevant methods.(¶¤ìÿÿÿÿÿ
+r
+java:S1450("]Remove the "bufferedReader" field and declare it as a local variable in the relevant methods.(ˆ±€l
+s
+java:S1450+"XRemove the "controls2" field and declare it as a local variable in the relevant methods.(Å•‹õıÿÿÿÿ
+=
+java:S1948"(Make "thread" transient or serializable.(â£Ÿ4
+B
+java:S1948 "'Make "world" transient or serializable.(íÉü¹ıÿÿÿÿ
+C
+java:S1948!"(Make "buffer" transient or serializable.(¶¤ìÿÿÿÿÿ
+?
+java:S1948""$Make "bg" transient or serializable.(±É›¥ùÿÿÿÿ
+?
+java:S1948#")Make "gameHUD" transient or serializable.(ØØ
+E
+java:S1948("0Make "bufferedReader" transient or serializable.(ˆ±€l
+F
+java:S1948*"+Make "controls1" transient or serializable.(ÀñíÅıÿÿÿÿ
+F
+java:S1948+"+Make "controls2" transient or serializable.(Å•‹õıÿÿÿÿ
+F
+java:S1948,"+Make "controls3" transient or serializable.(Öİ³”ÿÿÿÿÿ
+F
+java:S1948-"+Make "controls4" transient or serializable.(ğÇÒ¢ıÿÿÿÿ
+K
+java:S22099"5Change this instance-reference to a static reference.(ıì ñ
+j
+java:S1215H"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“
+N	java:S106W"9Replace this use of System.out or System.err by a logger.(¸”­
+P
+java:S2209X"5Change this instance-reference to a static reference.(ŠÑâáıÿÿÿÿ
+S	java:S106g"9Replace this use of System.out or System.err by a logger.(®‡µ½ıÿÿÿÿ
+h
+java:S3776p"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(ßçÅ¼
+L
+java:S2696t"6Make the enclosing method "static" or remove this set.(àò¹Â
+L
+java:S2696u"6Make the enclosing method "static" or remove this set.(ûğİó
+J
+java:S2209"5Change this instance-reference to a static reference.(Òüp
+Q
+java:S2209š"5Change this instance-reference to a static reference.(Œè†÷ıÿÿÿÿ
+L
+java:S2209£"5Change this instance-reference to a static reference.(ˆ‹Û
+L
+java:S2209ª"5Change this instance-reference to a static reference.(Ö÷ê™
+X
+java:S2209³"5Change this instance-reference to a static reference.(Ñå”Ûşÿÿÿÿ8‡ºŒŸ1
+k
+java:S1215Ÿ"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“
+V
+java:S1161¢":Add the "@Override" annotation above this method signature(Åáçİøÿÿÿÿ
+i
+java:S3776Û"RRefactor this method to reduce its Cognitive Complexity from 33 to the 15 allowed.(¸ñ®Æ
+W	java:S125ô"<This block of commented-out lines of code should be removed.(ÇŒ‚šúÿÿÿÿ
+z
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(®ûºöÿÿÿÿÿ
+D	java:S108")Either remove or fill this block of code.(®ûºöÿÿÿÿÿ
+W	java:S125©"<This block of commented-out lines of code should be removed.(¥¤ãçøÿÿÿÿ
+Ü
+java:S6541p"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 98 to 64, Complexity from 25 to 14, Nesting Level from 4 to 2, Number of Variables from 25 to 6.(ßçÅ¼
