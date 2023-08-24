@@ -1,6 +1,7 @@
 package Logic;
 import presentation.*;
 
+import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -224,5 +225,9 @@ public class Bomber extends Player {
     public void handleCollision(Powerup collidingObj) {
         collidingObj.grantBonus(this);
         collidingObj.destroy();
+    }
+
+    public Point2D getPosition() {
+        return this.position;
     }
 }

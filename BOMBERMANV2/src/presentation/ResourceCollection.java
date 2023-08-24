@@ -47,6 +47,7 @@ public class ResourceCollection {
             SpriteMaps.PLAYER_4.image = ImageIO.read(ResourceCollection.class.getResource("/resources/bomber4.png"));
             SpriteMaps.BALLOM.image = ImageIO.read(ResourceCollection.class.getResource("/resources/bomber2.png"));
             SpriteMaps.BAYON.image = ImageIO.read(ResourceCollection.class.getResource("/resources/bomber3.png"));
+            SpriteMaps.PASS.image = ImageIO.read(ResourceCollection.class.getResource("/resources/bomber4.png"));
             SpriteMaps.HARD_WALLS.image = ImageIO.read(ResourceCollection.class.getResource("/resources/hardWalls.png"));
             SpriteMaps.BOMB.image = ImageIO.read(ResourceCollection.class.getResource("/resources/bomb.png"));
             SpriteMaps.BOMB_PIERCE.image = ImageIO.read(ResourceCollection.class.getResource("/resources/bomb_pierce.png"));
@@ -66,6 +67,8 @@ public class ResourceCollection {
         SpriteMaps.PLAYER_1.sprites = sliceSpriteMap(SpriteMaps.PLAYER_1.image, 32, 48);
         SpriteMaps.PLAYER_2.sprites = sliceSpriteMap(SpriteMaps.PLAYER_2.image, 32, 48);
         SpriteMaps.BALLOM.sprites = sliceSpriteMap(SpriteMaps.BALLOM.image, 32, 48);
+        SpriteMaps.BAYON.sprites = sliceSpriteMap(SpriteMaps.BAYON.image, 32, 48);
+        SpriteMaps.PASS.sprites = sliceSpriteMap(SpriteMaps.PASS.image, 32, 48);
         SpriteMaps.PLAYER_3.sprites = sliceSpriteMap(SpriteMaps.PLAYER_3.image, 32, 48);
         SpriteMaps.PLAYER_4.sprites = sliceSpriteMap(SpriteMaps.PLAYER_4.image, 32, 48);
         SpriteMaps.HARD_WALLS.sprites = sliceSpriteMap(SpriteMaps.HARD_WALLS.image, 32, 32);

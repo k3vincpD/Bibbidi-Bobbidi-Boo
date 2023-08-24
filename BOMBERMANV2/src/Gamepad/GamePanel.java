@@ -115,7 +115,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.mapHeight = mapLayout.size();
         panelWidth = this.mapWidth * 32;
         panelHeight = this.mapHeight * 32;
-
+        Bomber player2 = null;
         this.world = new BufferedImage(this.mapWidth * 32, this.mapHeight * 32, BufferedImage.TYPE_INT_RGB);
 
         // Generate entire map
@@ -161,7 +161,7 @@ public class GamePanel extends JPanel implements Runnable {
 
                     case ("2"):     // Player 2; Bomber
                         BufferedImage[][] sprMapP2 = ResourceCollection.SpriteMaps.PLAYER_2.getSprites();
-                        Bomber player2 = new Bomber(new Point2D.Float(x * 32, y * 32 - 16), sprMapP2);
+                        player2 = new Bomber(new Point2D.Float(x * 32, y * 32 - 16), sprMapP2);
                         PlayerController playerController2 = new PlayerController(player2, this.controls2);
                         this.addKeyListener(playerController2);
                         this.gameHUD.assignPlayer(player2, 1);
@@ -192,11 +192,17 @@ public class GamePanel extends JPanel implements Runnable {
                         GameObjectCollection.spawn(ballom);
                         break;
 
-                    /*case ("BA"):     // Bayon; Enemy
+                    case ("BA"):     // Bayon; Enemy
                         BufferedImage[][] sprMapBayon = ResourceCollection.SpriteMaps.BAYON.getSprites();
                         Bayon bayon = new Bayon(new Point2D.Float(x * 32, y * 32 - 16), sprMapBayon);
                         GameObjectCollection.spawn(bayon);
-                        break;*/
+                        break;
+
+                    case ("P"):     // Pass; Enemy
+                        BufferedImage[][] sprMapPass = ResourceCollection.SpriteMaps.PASS.getSprites();
+                        Pass pass = new Pass(new Point2D.Float(x * 32, y * 32 - 16), sprMapPass, player2);
+                        GameObjectCollection.spawn(pass);
+                        break;
 
                     case ("PB"):    // Powerup Bomb
                         Powerup powerBomb = new Powerup(new Point2D.Float(x * 32, y * 32), Powerup.Type.Bomb);
