@@ -122,4 +122,7 @@ public abstract class Enemy extends GameObject {
         position.setLocation(position.x + moveSpeed, position.y);
     }
 
+    public boolean isDead() {
+        return this.dead;
+    }
 }

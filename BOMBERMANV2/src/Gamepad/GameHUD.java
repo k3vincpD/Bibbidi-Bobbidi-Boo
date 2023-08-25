@@ -1,131 +1,82 @@
 package Gamepad;
 
-import Logic.*;
+import Logic.Bomber;
+import Logic.Enemy;
+import presentation.GameObjectCollection;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-/**
- * Displays various game information on the screen such as each player's score.
- */
 public class GameHUD {
 
-    private Bomber[] players;
-    private BufferedImage[] playerInfo;
-    private int[] playerScore;
-    boolean matchSet;
+    private Bomber player1;
+    private BufferedImage playerInfo;
+    private int player1Score;
+    private int remainingTimeInSeconds;
+    private long lastUpdateTime;
+    public boolean matchSet;
 
-    GameHUD() {
-        this.players = new Bomber[4];
-        this.playerInfo = new BufferedImage[4];
-        this.playerScore = new int[4];
-        this.matchSet = false;
+    private static final int HUD_UPDATE_INTERVAL_MS = 1000; // 1 segundo
+
+    public GameHUD() {
+        player1 = null;
+        playerInfo = null;
+        player1Score = 0;
+        remainingTimeInSeconds = 240; // 4 minutos en segundos (4 * 60)
+        lastUpdateTime = System.currentTimeMillis();
+        matchSet = false;
     }
 
-    void init() {
-        // Height of the HUD
+    public void init() {
         int height = GameWindow.HUD_HEIGHT;
-        // Width of each player's information in the HUD, 4 players, 4 info boxes
-        int infoWidth = GamePanel.panelWidth / 4;
-
-        this.playerInfo[0] = new BufferedImage(infoWidth, height, BufferedImage.TYPE_INT_RGB);
-        this.playerInfo[1] = new BufferedImage(infoWidth, height, BufferedImage.TYPE_INT_RGB);
-        this.playerInfo[2] = new BufferedImage(infoWidth, height, BufferedImage.TYPE_INT_RGB);
-        this.playerInfo[3] = new BufferedImage(infoWidth, height, BufferedImage.TYPE_INT_RGB);
+        int infoWidth = GamePanel.panelWidth;
+        playerInfo = new BufferedImage(infoWidth, height, BufferedImage.TYPE_INT_RGB);
     }
 
-    /**
-     * Used by game panel to draw player info to the screen
-     * @return Player info box
-     */
-    BufferedImage getP1info() {
-        return this.playerInfo[0];
-    }
-    BufferedImage getP2info() {
-        return this.playerInfo[1];
-    }
-    BufferedImage getP3info() {
-        return this.playerInfo[2];
-    }
-    BufferedImage getP4info() {
-        return this.playerInfo[3];
+    public void assignPlayer(Bomber player) {
+        player1 = player;
     }
 
-    /**
-     * Assign an info box to a player that shows the information on this player.
-     * @param player The player to be assigned
-     * @param playerID Used as an index for the array
-     */
-    void assignPlayer(Bomber player, int playerID) {
-        this.players[playerID] = player;
-    }
-
-    /**
-     * Checks if there is only one player alive left and increases their score.
-     * The match set boolean is used to check if a point is already added so that the winner can freely
-     * move around for a while before resetting the map. This also allows the winner to kill themselves without
-     * affecting their score since the score was already updated.
-     */
     public void updateScore() {
-        // Count dead players
-        int deadPlayers = 0;
-        for (int i = 0; i < this.players.length; i++) {
-            if (this.players[i].isDead()) {
-                deadPlayers++;
-            }
-        }
+        int deadEnemies = (int) GameObjectCollection.enemyObjects.stream().filter(Enemy::isDead).count();
+        int totalEnemies = GameObjectCollection.enemyObjects.size();
 
-        // Check for the last player standing and conclude the match
-        if (deadPlayers == this.players.length - 1) {
-            for (int i = 0; i < this.players.length; i++) {
-                if (!this.players[i].isDead()) {
-                    this.playerScore[i]++;
-                    this.matchSet = true;
-                }
-            }
-        } else if (deadPlayers >= this.players.length) {
-            // This should only be reached two or more of the last players die at the same time
-            this.matchSet = true;
+        if (deadEnemies == totalEnemies) {
+            player1Score++;
+            matchSet = true;
         }
     }
 
-    /**
-     * Continuously redraw player information such as score.
-     */
-    void drawHUD() {
-        Graphics[] playerGraphics = {
-                this.playerInfo[0].createGraphics(),
-                this.playerInfo[1].createGraphics(),
-                this.playerInfo[2].createGraphics(),
-                this.playerInfo[3].createGraphics()};
+    public void drawHUD() {
+        updateRemainingTime();
+        Graphics playerGraphics = playerInfo.createGraphics();
 
-        // Clean info boxes
-        playerGraphics[0].clearRect(0, 0, playerInfo[0].getWidth(), playerInfo[0].getHeight());
-        playerGraphics[1].clearRect(0, 0, playerInfo[1].getWidth(), playerInfo[1].getHeight());
-        playerGraphics[2].clearRect(0, 0, playerInfo[1].getWidth(), playerInfo[1].getHeight());
-        playerGraphics[3].clearRect(0, 0, playerInfo[1].getWidth(), playerInfo[1].getHeight());
+        playerGraphics.setColor(Color.BLACK);
+        playerGraphics.fillRect(0, 0, playerInfo.getWidth(), playerInfo.getHeight());
 
-        // Set border color per player
-        playerGraphics[0].setColor(Color.WHITE);    // Player 1 info box border color
-        playerGraphics[1].setColor(Color.GRAY);     // Player 2 info box border color
-        playerGraphics[2].setColor(Color.RED);      // Player 3 info box border color
-        playerGraphics[3].setColor(Color.BLUE);     // Player 4 info box border color
+        Font font = new Font("Courier New", Font.BOLD, 18);
+        playerGraphics.setFont(font);
+        playerGraphics.setColor(Color.WHITE);
+        playerGraphics.drawString("Score: " + player1Score, 10, 30);
+        playerGraphics.drawString("Time: " + formatTime(remainingTimeInSeconds), 10, 50);
+        playerGraphics.drawString("Lives: " + player1.getLives(), 10, 70);
 
-        // Iterate loop for each player
-        for (int i = 0; i < playerGraphics.length; i++) {
-            Font font = new Font("Courier New", Font.BOLD, 24);
-            // Draw border and sprite
-            playerGraphics[i].drawRect(1, 1, this.playerInfo[i].getWidth() - 2, this.playerInfo[i].getHeight() - 2);
-            playerGraphics[i].drawImage(this.players[i].getBaseSprite(), 0, 0, null);
+        playerGraphics.dispose();
+    }
 
-            // Draw score
-            playerGraphics[i].setFont(font);
-            playerGraphics[i].setColor(Color.WHITE);
-            playerGraphics[i].drawString("" + this.playerScore[i], this.playerInfo[i].getWidth() / 2, 32);
+    private void updateRemainingTime() {
+        long currentTime = System.currentTimeMillis();
+        long elapsedTime = currentTime - lastUpdateTime;
 
-            // Dispose
-            playerGraphics[i].dispose();
+        if (elapsedTime >= HUD_UPDATE_INTERVAL_MS) {
+            remainingTimeInSeconds--;
+            lastUpdateTime = currentTime;
         }
     }
 
+    private String formatTime(int timeInSeconds) {
+        int minutes = timeInSeconds / 60;
+        int seconds = timeInSeconds % 60;
+        return String.format("%02d:%02d", minutes, seconds);
+    }
 }

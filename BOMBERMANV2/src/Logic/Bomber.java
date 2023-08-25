@@ -230,4 +230,8 @@ public class Bomber extends Player {
     public Point2D getPosition() {
         return this.position;
     }
+
+    public String getLives() {
+        return "1";
+    }
 }

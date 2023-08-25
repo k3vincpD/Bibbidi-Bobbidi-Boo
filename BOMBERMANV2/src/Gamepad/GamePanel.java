@@ -40,10 +40,6 @@ public class GamePanel extends JPanel implements Runnable {
     private BufferedReader bufferedReader;
 
     private HashMap<Integer, Key> controls1;
-    private HashMap<Integer, Key> controls2;
-    private HashMap<Integer, Key> controls3;
-    private HashMap<Integer, Key> controls4;
-
     private static final double SOFTWALL_RATE = 0.825;
 
     /**
@@ -115,7 +111,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.mapHeight = mapLayout.size();
         panelWidth = this.mapWidth * 32;
         panelHeight = this.mapHeight * 32;
-        Bomber player2 = null;
+        Bomber player1 = null;
         this.world = new BufferedImage(this.mapWidth * 32, this.mapHeight * 32, BufferedImage.TYPE_INT_RGB);
 
         // Generate entire map
@@ -152,38 +148,11 @@ public class GamePanel extends JPanel implements Runnable {
 
                     case ("1"):     // Player 1; Bomber
                         BufferedImage[][] sprMapP1 = ResourceCollection.SpriteMaps.PLAYER_1.getSprites();
-                        Bomber player1 = new Bomber(new Point2D.Float(x * 32, y * 32 - 16), sprMapP1);
+                        player1 = new Bomber(new Point2D.Float(x * 32, y * 32 - 16), sprMapP1);
                         PlayerController playerController1 = new PlayerController(player1, this.controls1);
                         this.addKeyListener(playerController1);
-                        this.gameHUD.assignPlayer(player1, 0);
+                        this.gameHUD.assignPlayer(player1);
                         GameObjectCollection.spawn(player1);
-                        break;
-
-                    case ("2"):     // Player 2; Bomber
-                        BufferedImage[][] sprMapP2 = ResourceCollection.SpriteMaps.PLAYER_2.getSprites();
-                        player2 = new Bomber(new Point2D.Float(x * 32, y * 32 - 16), sprMapP2);
-                        PlayerController playerController2 = new PlayerController(player2, this.controls2);
-                        this.addKeyListener(playerController2);
-                        this.gameHUD.assignPlayer(player2, 1);
-                        GameObjectCollection.spawn(player2);
-                        break;
-
-                    case ("3"):     // Player 3; Bomber
-                        BufferedImage[][] sprMapP3 = ResourceCollection.SpriteMaps.PLAYER_3.getSprites();
-                        Bomber player3 = new Bomber(new Point2D.Float(x * 32, y * 32 - 16), sprMapP3);
-                        PlayerController playerController3 = new PlayerController(player3, this.controls3);
-                        this.addKeyListener(playerController3);
-                        this.gameHUD.assignPlayer(player3, 2);
-                        GameObjectCollection.spawn(player3);
-                        break;
-
-                    case ("4"):     // Player 4; Bomber
-                        BufferedImage[][] sprMapP4 = ResourceCollection.SpriteMaps.PLAYER_4.getSprites();
-                        Bomber player4 = new Bomber(new Point2D.Float(x * 32, y * 32 - 16), sprMapP4);
-                        PlayerController playerController4 = new PlayerController(player4, this.controls4);
-                        this.addKeyListener(playerController4);
-                        this.gameHUD.assignPlayer(player4, 3);
-                        GameObjectCollection.spawn(player4);
                         break;
 
                     case ("B"):     // Balloom; Enemy
@@ -200,7 +169,7 @@ public class GamePanel extends JPanel implements Runnable {
 
                     case ("P"):     // Pass; Enemy
                         BufferedImage[][] sprMapPass = ResourceCollection.SpriteMaps.PASS.getSprites();
-                        Pass pass = new Pass(new Point2D.Float(x * 32, y * 32 - 16), sprMapPass, player2);
+                        Pass pass = new Pass(new Point2D.Float(x * 32, y * 32 - 16), sprMapPass, player1);
                         GameObjectCollection.spawn(pass);
                         break;
 
@@ -251,9 +220,7 @@ public class GamePanel extends JPanel implements Runnable {
      */
     private void setControls() {
         this.controls1 = new HashMap<>();
-        this.controls2 = new HashMap<>();
-        this.controls3 = new HashMap<>();
-        this.controls4 = new HashMap<>();
+
 
         // Set Player 1 controls
         this.controls1.put(KeyEvent.VK_UP, Key.up);
@@ -262,26 +229,6 @@ public class GamePanel extends JPanel implements Runnable {
         this.controls1.put(KeyEvent.VK_RIGHT, Key.right);
         this.controls1.put(KeyEvent.VK_B, Key.action);
 
-        // Set Player 2 controls
-        this.controls2.put(KeyEvent.VK_W, Key.up);
-        this.controls2.put(KeyEvent.VK_S, Key.down);
-        this.controls2.put(KeyEvent.VK_A, Key.left);
-        this.controls2.put(KeyEvent.VK_D, Key.right);
-        this.controls2.put(KeyEvent.VK_E, Key.action);
-
-        // Set Player 3 controls
-        this.controls3.put(KeyEvent.VK_T, Key.up);
-        this.controls3.put(KeyEvent.VK_G, Key.down);
-        this.controls3.put(KeyEvent.VK_F, Key.left);
-        this.controls3.put(KeyEvent.VK_H, Key.right);
-        this.controls3.put(KeyEvent.VK_Y, Key.action);
-
-        // Set Player 4 controls
-        this.controls4.put(KeyEvent.VK_I, Key.up);
-        this.controls4.put(KeyEvent.VK_K, Key.down);
-        this.controls4.put(KeyEvent.VK_J, Key.left);
-        this.controls4.put(KeyEvent.VK_L, Key.right);
-        this.controls4.put(KeyEvent.VK_O, Key.action);
     }
 
     /**
@@ -444,14 +391,7 @@ public class GamePanel extends JPanel implements Runnable {
 //              obj.drawCollider(this.buffer);
             }
         }
-
-        // Draw HUD
-        int infoBoxWidth = panelWidth / 4;
-        g2.drawImage(this.gameHUD.getP1info(), infoBoxWidth * 0, 0, null);
-        g2.drawImage(this.gameHUD.getP2info(), infoBoxWidth * 1, 0, null);
-        g2.drawImage(this.gameHUD.getP3info(), infoBoxWidth * 2, 0, null);
-        g2.drawImage(this.gameHUD.getP4info(), infoBoxWidth * 3, 0, null);
-
+;
         // Draw game world offset by the HUD
         g2.drawImage(this.world, 0, GameWindow.HUD_HEIGHT, null);
 

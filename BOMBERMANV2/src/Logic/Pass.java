@@ -10,9 +10,9 @@ public class Pass extends Enemy {
     private BufferedImage[][] sprites;
     private Point2D.Float targetPosition;
     private float interpolationFactor = 0.2f;
-    private static final float RANDOM_MOVE_SPEED = 1.0f; // Velocidad para el movimiento aleatorio
-    private static final float CHASE_MOVE_SPEED = 4.0f; // Velocidad para la persecución
-    private static final float CHASE_DISTANCE_THRESHOLD = 100.0f; // Distancia para comenzar a perseguir
+    private static final float RANDOM_MOVE_SPEED = 1.5f; // Velocidad para el movimiento aleatorio
+    private static final float CHASE_MOVE_SPEED = 5.0f; // Velocidad para la persecución
+    private static final float CHASE_DISTANCE_THRESHOLD = 50.0f; // Distancia para comenzar a perseguir
     private boolean isChasing = false;
     private Random random = new Random();
 
